@@ -60,6 +60,14 @@ const config: (
       showItemsOnMobile: false,
       items: [
         {
+          label: 'Mint',
+          href: '/mint-nft',
+        },
+        {
+          label: 'My Inventory',
+          href: '/my-inventory',
+        },
+        {
           label: t('Swap'),
           href: '/swap',
         },
