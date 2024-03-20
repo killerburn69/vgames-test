@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
+import { device } from 'views/Mint/util'
 import { useAccount } from 'wagmi'
 import Item from '../components/Item'
 import ItemList from '../components/ItemList'
@@ -9,8 +10,24 @@ import useBalanceOf from '../hooks/useBalanceOf'
 const FlexDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 20px;
+  gap: 10px;
   padding: 50px;
+  @media ${device.lg} {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 20px;
+  }
+  @media ${device.md} {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px;
+  }
+  @media ${device.sm} {
+    grid-template-columns: 1fr 1fr;
+    padding: 5px;
+  }
+  @media ${device.xs} {
+    grid-template-columns: 1fr;
+    padding: 5px;
+  }
 `
 const FlexButton = styled.div`
   display: flex;
@@ -35,9 +52,18 @@ const ButtonChange = styled.button<{ isStatus?: boolean }>`
 `
 const GridTitle = styled.div`
   display: grid;
-  grid-template-columns: 0.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
   padding: 30px 0;
   border-bottom: 1px solid white;
+`
+const GridDiv = styled.div`
+  padding: 10px;
+  @media ${device.lg} {
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: scroll;
+  }
 `
 const Overview = () => {
   const { address } = useAccount()
@@ -68,7 +94,7 @@ const Overview = () => {
         </FlexDiv>
       )}
       {status === 2 && (
-        <div style={{ padding: '10px' }}>
+        <GridDiv>
           <GridTitle>
             <div />
             <div>Item</div>
@@ -76,7 +102,6 @@ const Overview = () => {
             <div>Best Offer</div>
             <div>Last Sale</div>
             <div>Rarity</div>
-            {address && <div>Owner</div>}
             <div>Time Listed</div>
           </GridTitle>
           <div style={{ padding: '20px 0px' }}>
@@ -85,7 +110,7 @@ const Overview = () => {
               <ItemList key={index} item={index + 1} address={address} />
             ))}
           </div>
-        </div>
+        </GridDiv>
       )}
     </div>
   )

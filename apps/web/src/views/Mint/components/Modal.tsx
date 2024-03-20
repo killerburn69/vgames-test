@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import { useDebounce } from '@pancakeswap/hooks'
 import { ModalBody, ModalContainer, ModalHeader, ModalV2 } from '@pancakeswap/uikit'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { useNetwork } from 'wagmi'
 import Button from './Button'
@@ -21,7 +21,7 @@ const ModalMint = ({ isOpen, setIsOpenModa }) => {
   }
   return (
     <ModalV2 title="Mint NFT" isOpen={isOpen} closeOnOverlayClick>
-      <ModalContainer style={{ width: '500px' }}>
+      <ModalContainer style={{ maxWidth: '500px' }}>
         <ModalHeader style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <h1 style={{ fontSize: '25px', fontWeight: '600' }}>Mint NFT</h1>
           <button onClick={() => setIsOpenModa(false)}>X</button>

@@ -1,12 +1,13 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { styled } from 'styled-components'
 import ModalMint from '../components/Modal'
 import img1 from '../images/next-seo.config.png'
+import { device } from '../util'
 
 const ButtonMint = styled.button`
-  height: 100px;
-  width: 400px;
+  min-height: 100px;
+  min-width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,6 +15,10 @@ const ButtonMint = styled.button`
   border-radius: 15px;
   margin-top: 20px;
   cursor: pointer;
+  @media ${device.sm} {
+    min-height: 100px;
+    min-width: 200px;
+  }
 `
 const TextMint = styled.span`
   font-size: 25px;
@@ -27,7 +32,7 @@ const BoxMint = styled.div`
   align-items: center;
   height: 700px;
   background: #313131;
-  width: 700px;
+  max-width: 700px;
   margin: 0 auto;
 `
 const BoxMint2 = styled.div`
@@ -41,7 +46,7 @@ const Overview = () => {
   return (
     <BoxMint>
       <BoxMint2 style={{}}>
-        <Image src={img1} alt="" width={300} height={300} />
+        <Image src={img1} alt="" style={{ maxWidth: '350px', maxHeight: '350px' }} />
         <ButtonMint onClick={() => setIsOpenModal(true)}>
           <TextMint style={{ display: 'block' }}>Mint NFT</TextMint>
         </ButtonMint>
